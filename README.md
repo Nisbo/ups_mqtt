@@ -69,8 +69,44 @@ sudo docker save -o ups_mqtt_image.tar ups_mqtt
 
 ## ▶️ Container starten (über die Synology GUI)
 
+Alternativ zur Kommandozeile (weiter unten beschrieben) kannst du den Container auch direkt über die Synology-Oberfläche starten:
 
-## ▶️ Container starten (von der Shell)
+1. Öffne das **Docker-Paketzentrum** auf deiner Synology NAS.
+2. Gehe zu **"Image"** und lade das zuvor erstellte Image hoch (`ups_mqtt_image.tar`), falls noch nicht vorhanden:
+   - Klicke auf **"Importieren"** oder **"Hinzufügen"**, um das `.tar`-Image auszuwählen.
+3. Wechsle zu **"Container"** und klicke auf **"Erstellen"**:
+   - Wähle das `ups_mqtt`-Image aus.
+   - Vergib einen Namen, z. B. `ups_mqtt`.
+
+### 🔧 Wichtige Einstellungen
+
+- Contaiiner im Host Netzwerk erstellen
+- **Erweiterte Einstellungen aktivieren**
+  - Aktiviere **"Automatisch neu starten"**.
+  - Unter **"Umgebungsvariablen"** füge die folgenden (angepassten) Schlüssel/Werte hinzu:
+
+    | Name                 | Wert (Beispiel)              |
+    |----------------------|------------------------------|
+    | `MQTT_BROKER`        | `192.168.178.27`             |
+    | `MQTT_PORT`          | `1883`                       |
+    | `MQTT_USER`          | `dein_benutzername`          |
+    | `MQTT_PASSWORD`      | `dein_passwort`              |
+    | `UPS_NAME`           | `ups`                        |
+    | `UPS_HOST`           | `localhost`                  |
+    | `MQTT_TOPIC_BASE`    | `home/ups`                   |
+    | `POLL_INTERVAL`      | `2`                          |
+    | `FULL_UPDATE_INTERVAL` | `30`                       |
+    | `IMPORTANT_VARS`     | `battery.runtime,ups.status` |
+
+4. Klicke auf **"Übernehmen"** und starte den Container.
+
+Nach dem Start beginnt das Skript automatisch mit der Abfrage der USV-Daten und sendet sie über MQTT.
+
+---
+
+
+
+## ▶️ Container starten (von der Shell zum testen)
 
 ```bash
 sudo docker run -d \
