@@ -50,7 +50,27 @@ sudo docker save -o ups_mqtt_image.tar ups_mqtt
 
 ---
 
-## ▶️ Container starten
+## ⚙️ Konfigurierbare Umgebungsvariablen
+
+| Variable              | Beschreibung                                                                 | Standardwert              |
+|-----------------------|------------------------------------------------------------------------------|---------------------------|
+| `MQTT_BROKER`         | IP-Adresse oder Hostname des MQTT-Brokers                                    | `192.168.178.27`          |
+| `MQTT_PORT`           | Port des MQTT-Brokers                                                        | `1883`                    |
+| `MQTT_USER`           | *(Optional)* Benutzername für den MQTT-Broker                                | *(leer)*                  |
+| `MQTT_PASSWORD`       | *(Optional)* Passwort für den MQTT-Broker                                    | *(leer)*                  |
+| `MQTT_TOPIC_BASE`     | Basis-Topic für MQTT-Nachrichten                                             | `home/ups`                |
+| `UPS_NAME`            | UPS-Name (muss mit dem Namen im UPS-Server übereinstimmen)                   | `ups`                     |
+| `UPS_HOST`            | Hostname/IP des UPS-Servers                                                  | `localhost`               |
+| `POLL_INTERVAL`       | Abfrageintervall für wichtige Variablen (in Sekunden)                        | `1`                       |
+| `FULL_UPDATE_INTERVAL`| Intervall für das Senden **aller** Variablen (in Sekunden)                   | `30`                      |
+| `IMPORTANT_VARS`      | Kommagetrennte Liste wichtiger Variablen, die häufiger gesendet werden sollen| `battery.runtime,ups.status` |
+
+---
+
+## ▶️ Container starten (über die Synology GUI)
+
+
+## ▶️ Container starten (von der Shell)
 
 ```bash
 sudo docker run -d \
@@ -68,23 +88,6 @@ sudo docker run -d \
   -e IMPORTANT_VARS="battery.runtime,ups.status" \
   ups_mqtt
 ```
-
----
-
-## ⚙️ Konfigurierbare Umgebungsvariablen
-
-| Variable              | Beschreibung                                                                 | Standardwert              |
-|-----------------------|------------------------------------------------------------------------------|---------------------------|
-| `MQTT_BROKER`         | IP-Adresse oder Hostname des MQTT-Brokers                                    | `192.168.178.27`          |
-| `MQTT_PORT`           | Port des MQTT-Brokers                                                        | `1883`                    |
-| `MQTT_USER`           | *(Optional)* Benutzername für den MQTT-Broker                                | *(leer)*                  |
-| `MQTT_PASSWORD`       | *(Optional)* Passwort für den MQTT-Broker                                    | *(leer)*                  |
-| `MQTT_TOPIC_BASE`     | Basis-Topic für MQTT-Nachrichten                                             | `home/ups`                |
-| `UPS_NAME`            | UPS-Name (muss mit dem Namen im UPS-Server übereinstimmen)                   | `ups`                     |
-| `UPS_HOST`            | Hostname/IP des UPS-Servers                                                  | `localhost`               |
-| `POLL_INTERVAL`       | Abfrageintervall für wichtige Variablen (in Sekunden)                        | `1`                       |
-| `FULL_UPDATE_INTERVAL`| Intervall für das Senden **aller** Variablen (in Sekunden)                   | `30`                      |
-| `IMPORTANT_VARS`      | Kommagetrennte Liste wichtiger Variablen, die häufiger gesendet werden sollen| `battery.runtime,ups.status` |
 
 ---
 
@@ -108,24 +111,3 @@ home/ups/ups.status
 
 ---
 
-## ✅ Beispielhafte Ausgabe
-
-```bash
-MQTT Publish: home/ups/battery.runtime -> 1200
-MQTT Publish: home/ups/ups.status -> OL
-Discovery-Konfiguration gesendet: homeassistant/sensor/ups_battery_runtime/config
-```
-
----
-
-## 📦 Inhalt
-
-- `ups_mqtt.py` – Das Hauptskript
-- `Dockerfile` – Docker-Definition für den Container
-- `requirements.txt` – Python-Abhängigkeiten
-
----
-
-## 📜 Lizenz
-
-MIT License – Nutzung auf eigene Gefahr.
