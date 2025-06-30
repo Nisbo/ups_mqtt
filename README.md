@@ -64,7 +64,8 @@ sudo docker save -o ups_mqtt_image.tar ups_mqtt
 | `POLL_INTERVAL`       | Abfrageintervall für wichtige Variablen (in Sekunden)                        | `1`                       |
 | `FULL_UPDATE_INTERVAL`| Intervall für das Senden **aller** Variablen (in Sekunden)                   | `30`                      |
 | `IMPORTANT_VARS`      | Kommagetrennte Liste wichtiger Variablen, die häufiger gesendet werden sollen| `battery.runtime,ups.status` |
-
+'POLL_INTERVAL' - hier werten nur Werte gesendet, wenn sich diese auch geändert haben
+'FULL_UPDATE_INTERVAL' - hier werden immer alle Werte gesendet
 ---
 
 ## ▶️ Container starten (über die Synology GUI)
