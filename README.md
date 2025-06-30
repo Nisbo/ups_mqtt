@@ -107,6 +107,11 @@ Alternativ zur Kommandozeile (weiter unten beschrieben) kannst du den Container 
 
 Nach dem Start beginnt das Skript automatisch mit der Abfrage der USV-Daten und sendet sie über MQTT.
 
+5. ggf muss noch die Server-IP unter den erlaubten Servern bei der Synology eingetragen werden
+6. ```Systemsteuerung --> Info-Center --> Hardware & Energie --> Tab USV```
+![grafik](https://github.com/user-attachments/assets/ab6fd732-5bbc-497c-a866-116087a870ef)
+
+
 ---
 
 
