@@ -17,7 +17,7 @@ Das Skript läuft in einem **Docker-Container** direkt auf der Synology (oder ei
 
 ---
 
-## 🛠️ Einrichtung (zum "Selberbauen")
+## 🛠️ Einrichtung (zum "Selberbauen") --> Fertiges Image kommt später mal (kann hier keine tar Dateien hochladen)
 
 Auf einem Gerät mit Docker (z. B. Synology NAS oder Debian/Ubuntu Server) folgende Schritte ausführen:
 
@@ -78,9 +78,11 @@ Alternativ zur Kommandozeile (weiter unten beschrieben) kannst du den Container 
    - Wähle das `ups_mqtt`-Image aus.
    - Vergib einen Namen, z. B. `ups_mqtt`.
 
-### 🔧 Wichtige Einstellungen
+### 🔧 Einstellungen
 
-- Contaiiner im Host Netzwerk erstellen
+- Container im Host Netzwerk erstellen
+- ![grafik](https://github.com/user-attachments/assets/dc2c0b89-4985-4548-98da-a650f5b97d85)
+
 - **Erweiterte Einstellungen aktivieren**
   - Aktiviere **"Automatisch neu starten"**.
   - Unter **"Umgebungsvariablen"** füge die folgenden (angepassten) Schlüssel/Werte hinzu:
@@ -97,6 +99,9 @@ Alternativ zur Kommandozeile (weiter unten beschrieben) kannst du den Container 
     | `POLL_INTERVAL`      | `2`                          |
     | `FULL_UPDATE_INTERVAL` | `30`                       |
     | `IMPORTANT_VARS`     | `battery.runtime,ups.status` |
+    Beispiel-Screenshot. Ich nutze einen anderen MQTT Port und keine Login-Daten, also nicht verwirren lassen.
+    ![grafik](https://github.com/user-attachments/assets/fe8c8510-0e45-4d60-8084-5b0f4ef4da8e)
+
 
 4. Klicke auf **"Übernehmen"** und starte den Container.
 
