@@ -61,11 +61,10 @@ sudo docker save -o ups_mqtt_image.tar ups_mqtt
 | `MQTT_TOPIC_BASE`     | Basis-Topic für MQTT-Nachrichten                                             | `home/ups`                |
 | `UPS_NAME`            | UPS-Name (muss mit dem Namen im UPS-Server übereinstimmen)                   | `ups`                     |
 | `UPS_HOST`            | Hostname/IP des UPS-Servers                                                  | `localhost`               |
-| `POLL_INTERVAL`       | Abfrageintervall für wichtige Variablen (in Sekunden) - hier werten nur Werte gesendet, wenn sich diese auch geändert haben                       | `1`                       |
-| `FULL_UPDATE_INTERVAL`| Intervall für das Senden **aller** Variablen (in Sekunden)                   | `30`                      |
+| `POLL_INTERVAL`       | Abfrageintervall für wichtige Variablen (in Sekunden) - hier werten nur untzer IMPORTANT_VARS konfigurierten Werte gesendet, wenn sich diese auch geändert haben.                       | `1`                       |
+| `FULL_UPDATE_INTERVAL`| Intervall für das Senden **aller** Variablen (in Sekunden)  - hier werden immer alle Werte gesendet im eingestellten Intervall gesendet.                  | `30`                      |
 | `IMPORTANT_VARS`      | Kommagetrennte Liste wichtiger Variablen, die häufiger gesendet werden sollen| `battery.runtime,ups.status` |
-'POLL_INTERVAL' - hier werten nur Werte gesendet, wenn sich diese auch geändert haben
-'FULL_UPDATE_INTERVAL' - hier werden immer alle Werte gesendet
+
 ---
 
 ## ▶️ Container starten (über die Synology GUI)
