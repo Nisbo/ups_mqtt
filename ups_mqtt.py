@@ -1,4 +1,3 @@
-  GNU nano 8.3                                                                                                                                                           ups_mqtt.py                                                                                                                                                                      
 import os
 import subprocess
 import time
