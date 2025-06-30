@@ -61,7 +61,7 @@ sudo docker save -o ups_mqtt_image.tar ups_mqtt
 | `MQTT_TOPIC_BASE`     | Basis-Topic für MQTT-Nachrichten                                             | `home/ups`                |
 | `UPS_NAME`            | UPS-Name (muss mit dem Namen im UPS-Server übereinstimmen)                   | `ups`                     |
 | `UPS_HOST`            | Hostname/IP des UPS-Servers                                                  | `localhost`               |
-| `POLL_INTERVAL`       | Abfrageintervall für wichtige Variablen (in Sekunden) - hier werten nur untzer IMPORTANT_VARS konfigurierten Werte gesendet, wenn sich diese auch geändert haben.                       | `1`                       |
+| `POLL_INTERVAL`       | Abfrageintervall für wichtige Variablen (in Sekunden) - hier werten nur untzer IMPORTANT_VARS konfigurierten Werte gesendet, wenn sich diese auch geändert haben. Dies ist auch das Intervall wie oft die USV abgefragt wird.                      | `1`                       |
 | `FULL_UPDATE_INTERVAL`| Intervall für das Senden **aller** Variablen (in Sekunden)  - hier werden immer alle Werte gesendet im eingestellten Intervall gesendet.                  | `30`                      |
 | `IMPORTANT_VARS`      | Kommagetrennte Liste wichtiger Variablen, die häufiger gesendet werden sollen| `battery.runtime,ups.status` |
 
